@@ -26,7 +26,7 @@ end
 opt.on('-o', '--output FILE', 'Write output to file') do |v|
   output = File.open(v, 'w')
 end
-opt.on('-ti', '--textIndicator TI', 'Indicate text') do |v|
+opt.on('-t', '--textIndicator TI', 'Indicate text') do |v|
   options[:ti] = v
 end
 opt.on('-H', '--headers HEADERS',
