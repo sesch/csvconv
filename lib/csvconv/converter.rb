@@ -5,7 +5,7 @@ module CSVConv
       @format = format
       @sep = options[:sep] || ','
       @header = options[:header]
-      @text = options[:ti] || nil
+      @text_list = options[:ti] || nil
     end
 
     def convert(input)
@@ -13,8 +13,10 @@ module CSVConv
       hash_array = []
       while (line = input.gets)
         hash_line = Parser.parse_line(line, @header, @sep)
-        if @text && hash_line[@text] then
-          hash_line[@text] = hash_line[@text].inspect
+        @text_list.each do |text|
+          if text && hash_line[text] then
+            hash_line[text] = hash_line[text].inspect
+          end
         end
         
         hash_array << hash_line   
